@@ -13,5 +13,7 @@ npm run dev
 
 This is the source of the first video tutorial realized for Codice Inutile
 
+![Preview youtube](https://i.imgur.com/tc4Ot7Y.jpg)
+
 http://www.lucamoroni.com/
 https://www.codiceinutile.org/
