@@ -1,19 +1,8 @@
-# Primo video tutorial di codice-inutile
+# Tutorials Three JS by Codice Inutile
 
-Questo è il codice del primo video tutorial che trovate al link
-https://www.youtube.com/watch?v=wHdK1Mtuhm8
+In questo repository potrete trovare il codice dei videotutorial pubblicati sul canale Youtube di [Codice Inutile](https://www.youtube.com/channel/UCp6sB4tHnhHcRFSGRm36xOQ/videos)
 
-Una volta clonato il repository aprire un terminale nella cartella ed eseguire
+Esplorate le branch per visualizzare il codice e i video.
 
-npm install
-
-Per far partire il webserver locale eseguire
-
-npm run dev
-
-This is the source of the first video tutorial realized for Codice Inutile
-
-![Preview youtube](https://i.imgur.com/tc4Ot7Y.jpg)
-
-http://www.lucamoroni.com/
-https://www.codiceinutile.org/
+* [00](/esnho/tutorial-three-js/tree/video-00)
+* [01](/esnho/tutorial-three-js/tree/video-01)
