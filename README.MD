@@ -4,5 +4,5 @@ In questo repository potrete trovare il codice dei videotutorial pubblicati sul 
 
 Esplorate le branch per visualizzare il codice e i video.
 
-* [00](/esnho/tutorial-three-js/tree/video-00)
-* [01](/esnho/tutorial-three-js/tree/video-01)
+* [00](/tree/video-00)
+* [01](/tree/video-01)
