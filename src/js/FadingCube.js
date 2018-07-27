@@ -9,11 +9,20 @@ export default class FadingCube extends BasicCube {
 
     this.mesh.material.transparent = true;
     this.mesh.material.opacity = 0.1;
+
   }
 
   update(timeElapsed) {
     const currentTime = timeElapsed - this.initialTime;
-    this.mesh.material.opacity = currentTime / this.life;
+    this.mesh.material.opacity = Math.sin(currentTime);
+
+    if (this.seed < 0.333) {
+      this.mesh.rotation.x = currentTime * 0.98;
+    } else if (this.seed >= 0.333 && this.seed <= 0.666) {
+      this.mesh.rotation.y = currentTime * 1.2;
+    } else if (this.seed >= 0.656) {
+      this.mesh.rotation.z = currentTime;
+    }
   }
 
   // timeElapsed == secondi passati dall'inizio della scena

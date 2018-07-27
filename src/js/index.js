@@ -29,6 +29,9 @@ window.document.addEventListener("click", (e) => {
   fadingCube.life = 5;
   fadingCube.initialTime = basicScene.clock.getElapsedTime();
   fadingCube.root.position.copy(point);
+  const scale = 5;
+  const newScale = new THREE.Vector3(scale, scale, scale);
+  fadingCube.root.scale.copy(newScale);
 
   console.log(fadingCube.initialTime);
   basicScene.Add(fadingCube);
