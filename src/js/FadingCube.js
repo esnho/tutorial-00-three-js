@@ -13,7 +13,18 @@ export default class FadingCube extends BasicCube {
 
   update(timeElapsed) {
     const currentTime = timeElapsed - this.initialTime;
-    this.mesh.material.opacity = currentTime / this.life;
+    const normalizedLife = currentTime / this.life;
+    this.mesh.material.opacity = 1 - normalizedLife;
+
+    this.mesh.rotation.x = normalizedLife * Math.PI;
+
+    if (normalizedLife > 1) {
+      this.OnDie();
+    }
+  }
+
+  OnDie() {
+    console.log("sono morto");
   }
 
   // timeElapsed == secondi passati dall'inizio della scena

@@ -47,6 +47,13 @@ export default class BasicScene {
     if (object.update) {
       this.updatables.push(object);
     }
+
+    object.OnDie = () => {this.Remove(object);}
+  }
+
+  Remove(object) {
+    this.updatables = this.updatables.filter(obj => obj.root.uuid !== object.root.uuid);
+    this.scene.remove(object.root);
   }
 
   Update() {
