@@ -2,39 +2,31 @@ import * as THREE from 'three';
 
 require('../css/style.css');
 import BasicScene from './BasicScene.js';
-import FadingCube from './FadingCube.js';
+import TravellingCube from './TravellingCube.js';
+import RotatingCube from './FadingCube.js';
+import PointOnClick from './PointOnClick.js';
 
 console.log("inizio");
 
 const basicScene = new BasicScene();
 basicScene.InitScene();
 const camera = basicScene.camera;
+const pointOnClickListener = new PointOnClick(camera, window);
+pointOnClickListener.onClickEvent = addTravellingCube;
 
-const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
-const plane = new THREE.Plane();
-const planeNormal = new THREE.Vector3();
-const point = new THREE.Vector3();
-const distanceFromCamera = 50;
+function addTravellingCube(point) {
+  console.log("travelling!", point);
 
-window.document.addEventListener("click", (e) => {
-  mouse.x = (e.clientX / window.innerWidth) * 2 - 1; // 0-1 -> -1-1
-  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-  planeNormal.copy(camera.position).normalize();
-  plane.set(planeNormal, distanceFromCamera);
-  raycaster.setFromCamera(mouse, camera);
-  raycaster.ray.intersectPlane(plane, point);
+  const travellingCube = new TravellingCube();
+  travellingCube.life = 1;
+  travellingCube.initialTime = basicScene.clock.getElapsedTime();
+  travellingCube.root.position.copy(point);
+  travellingCube.root.rotation.z = travellingCube.seed;
+  basicScene.Add(travellingCube);
 
-  const fadingCube = new FadingCube();
-  fadingCube.life = 1;
-  fadingCube.initialTime = basicScene.clock.getElapsedTime();
-  fadingCube.root.position.copy(point);
-  const newScale = new THREE.Vector3(5,5,5);
-  fadingCube.root.scale.copy(newScale);
-
-  console.log(fadingCube.initialTime);
-  basicScene.Add(fadingCube);
-});
-
-/*const fadingCube = new FadingCube();
-basicScene.Add(fadingCube);*/
+  const rotatingCube = new RotatingCube();
+  rotatingCube.life = 1;
+  rotatingCube.initialTime = basicScene.clock.getElapsedTime();
+  rotatingCube.root.position.copy(point);
+  basicScene.Add(rotatingCube);
+};
